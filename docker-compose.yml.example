@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  ethereum:
+    image: ethereum/client-go
+    container_name: ethereum-node
+    restart: always
+    ports:
+      - "18545:8545"
+      - "18546:8546"
+      - "10303:30303"
+    volumes:
+      - ./ethereum_home:/root
+    command: --verbosity 6 --rpc --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcapi "eth,net,web3,rpc,admin,personal,clique,debug,miner,shh,txpool"
